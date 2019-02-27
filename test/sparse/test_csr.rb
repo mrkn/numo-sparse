@@ -1,5 +1,3 @@
-require 'test_helper'
-
 class TestSparseCSR < Test::Unit::TestCase
   sub_test_case(".new") do
     sub_test_case("with shape and dtype class") do

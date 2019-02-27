@@ -6,6 +6,7 @@ require 'test/unit'
 
 test_dir = File.expand_path('..', __FILE__)
 lib_dir = File.expand_path('../lib', test_dir)
+
 $LOAD_PATH.unshift(lib_dir)
 
 require_relative 'test_helper'

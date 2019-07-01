@@ -23,6 +23,8 @@ module Numo
         @dtype = check_dtype(dtype)
         @data = []
     end
+	#insert the ability to create one just by finding the transpose of a CSR matrix
+	
    end
   end
  end

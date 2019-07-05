@@ -38,7 +38,40 @@ class TestSparseCSC < Test::Unit::TestCase
                      csc.nnz)
       end
     end
-  end
-end
+    sub_test_case("with Numo::NArray object") do
+      test("with 2D array") do
+        nary = Numo::DFloat[[1, 0, 2], [0, 3, 0], [4, 0, 5]]
+        csc = Numo::Sparse::CSC.new(nary)
 
-#Perform a set of basic tests until csr has been updated
+        assert_equal([3, 3],
+                     csc.shape)
+        assert_equal(2,
+                     csc.ndim)
+        assert_equal(5,
+                     csc.nnz)
+      end
+    end
+
+    sub_test_case("with Numo::NArray object") do
+      test("with 2D array and coords") do
+        naray = Numo::DFloat[[1, 0, 4], [0, 0, 5], [2, 3, 6]]
+        csc = Numo::Sparse::CSC.new(naray)
+      
+        assert_equal([3, 3],
+                     csc.shape)
+        assert_equal(2,
+                     csc.ndim)
+        assert_equal(6,
+                     csc.nnz)
+        assert_equal([1, 2, 3, 4, 5, 6], 
+                     csc.data_csc)
+        assert_equal([
+                       Numo::DFloat[1, 2, 3, 4, 5, 6],
+                       [0, 2, 2, 0, 1, 2],
+                       [0, 2, 3, 6]
+                       ],
+                    csc.coords)
+   end
+  end
+ end
+end

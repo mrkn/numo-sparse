@@ -9,11 +9,11 @@ TODO: Delete this and the text above, and describe your gem
 
 ## Status of Build
 
-[![Build Status](https://travis-ci.com/david81982/numo-sparse.svg?branch=Fixing-travis-CI)](https://travis-ci.com/david81982/numo-sparse)
+[![Build Status](https://travis-ci.org/mrkn/numo-sparse.svg?branch=master)](https://travis-ci.org/mrkn/numo-sparse)
 
-[![GitHub issues](https://img.shields.io/github/issues/david81982/numo-sparse.svg)](https://github.com/david81982/numo-sparse/issues)
+[![GitHub issues](https://img.shields.io/github/issues/mrkn/numo-sparse.svg)](https://github.com/mrkn/numo-sparse/issues)
 
-[![GitHub license](https://img.shields.io/github/license/david81982/numo-sparse.svg)](https://github.com/david81982/numo-sparse/blob/master/LICENSE.txt)
+[![GitHub license](https://img.shields.io/github/license/mrkn/numo-sparse.svg)](https://github.com/mrkn/numo-sparse/blob/master/LICENSE.txt)
 
 TODO: change name of profile as it is currently the forked numo-sparse
 

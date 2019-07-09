@@ -3,7 +3,7 @@ require 'numo/sparse/base'
 module Numo
   module Sparse
     class CSC < BaseTensor
-      attr_reader :shape, :dtype, :data, :indptr, :indices, :data_csc, :coords
+      attr_reader :shape, :dtype, :data, :indptr, :indices
       
       def self.max_ndim
         2
@@ -16,8 +16,7 @@ module Numo
       private def initialize_with_narray(narray)
         @shape = check_shape(narray.shape).dup.freeze
         @dtype = narray.class
-        @data = narray[narray.ne(0)]
-        @coords = make_coords(narray)
+        make_csc(narray)
       end
 
       private def initialize_empty(shape, dtype)
@@ -26,12 +25,12 @@ module Numo
         @data = []
       end
       
-      private def make_coords(narray)
+      private def make_csc(narray)
         row_limit, col_limit, matrix, curr_col, count =
           shape[0], shape[1], narray, 0, 0
         indices = []
         indptr = []
-        @data_csc = [] #Double check if this is correct
+        data = []
         indptr[0] = 0
         while curr_col < col_limit
           curr_row = 0
@@ -39,14 +38,16 @@ module Numo
             if(matrix[curr_row, curr_col] != 0)
               count += 1
               indices.push(curr_row)
-              @data_csc.push(matrix[curr_row, curr_col])
+              data.push(matrix[curr_row, curr_col])
             end
           curr_row += 1
           end
         indptr.push(count)
         curr_col += 1
         end
-      [@data_csc, indices, indptr]
+		@data = narray.class[*data]
+		@indices = Numo::Int32[*indices]
+		@indptr = Numo::Int32[*indptr]
       end
     end
   end

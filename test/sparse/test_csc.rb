@@ -63,14 +63,12 @@ class TestSparseCSC < Test::Unit::TestCase
                      csc.ndim)
         assert_equal(6,
                      csc.nnz)
-        assert_equal([1, 2, 3, 4, 5, 6], 
-                     csc.data_csc)
-        assert_equal([
-                       Numo::DFloat[1, 2, 3, 4, 5, 6],
-                       [0, 2, 2, 0, 1, 2],
-                       [0, 2, 3, 6]
-                       ],
-                    csc.coords)
+        assert_equal(Numo::DFloat[1, 2, 3, 4, 5, 6], 
+                     csc.data)
+        assert_equal(Numo::Int32[0, 2, 2, 0, 1, 2], 
+                     csc.indices)
+        assert_equal(Numo::Int32[0, 2, 3, 6], 
+                     csc.indptr)
    end
   end
  end

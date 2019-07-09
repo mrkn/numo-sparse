@@ -27,7 +27,7 @@ module Numo
 
       private def make_csc(narray)
         row_limit, col_limit = shape[0], shape[1]
-        matrix, curr_col, count = narray, 0, 0
+        curr_col, count = 0, 0
         indices = []
         indptr = []
         data = []
@@ -35,10 +35,10 @@ module Numo
         while curr_col < col_limit
           curr_row = 0
           while curr_row < row_limit
-            if matrix[curr_row, curr_col] != 0
+            if narray[curr_row, curr_col] != 0
               count += 1
               indices.push(curr_row)
-              data.push(matrix[curr_row, curr_col])
+              data.push(narray[curr_row, curr_col])
             end
             curr_row += 1
           end

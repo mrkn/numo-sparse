@@ -15,8 +15,6 @@ TODO: Delete this and the text above, and describe your gem
 
 [![GitHub license](https://img.shields.io/github/license/mrkn/numo-sparse.svg)](https://github.com/mrkn/numo-sparse/blob/master/LICENSE.txt)
 
-TODO: change name of profile as it is currently the forked numo-sparse
-
 ## Installation
 
 Add this line to your application's Gemfile:

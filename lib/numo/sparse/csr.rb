@@ -3,6 +3,8 @@ require 'numo/sparse/base'
 module Numo
   module Sparse
     class CSR < BaseTensor
+      attr_reader :shape, :dtype, :data, :indptr, :indices, :indices_temp
+
       def self.max_ndim
         2
       end
@@ -15,7 +17,7 @@ module Numo
         @shape = check_shape(narray.shape).dup.freeze
         @dtype = narray.class
         @data = narray[narray.ne(0)]
-        # TODO: index creation
+        make_csr(narray)
       end
 
       private def initialize_empty(shape, dtype)

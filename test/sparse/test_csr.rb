@@ -38,5 +38,34 @@ class TestSparseCSR < Test::Unit::TestCase
                      csr.nnz)
       end
     end
+
+    sub_test_case("with Numo::NArray object") do
+      test("create data/indices/indptr") do
+        naray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
+        csr = Numo::Sparse::CSR.new(naray)
+            
+        assert_equal([3, 3],
+                     csr.shape)
+        assert_equal(2,
+                     csr.ndim)
+        assert_equal(6,
+                     csr.nnz)
+        assert_equal(Numo::DFloat[1, 2, 3, 4, 5, 6],
+                     csr.data)
+        assert_equal(Numo::Int32[0, 2, 2, 0, 1, 2],
+                     csr.indices)
+        assert_equal(Numo::Int32[0, 2, 3, 6],
+                     csr.indptr)
+      end
+    end
+
+    sub_test_case("with Numo::NArray object") do
+        test("conversion from csr to narray") do
+          naray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
+          csr = Numo::Sparse::CSR.new(naray)
+          assert_equal(naray,
+                     csr.to_narray)
+      end
+    end
   end
 end

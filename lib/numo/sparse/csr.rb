@@ -17,7 +17,7 @@ module Numo
         @shape = check_shape(narray.shape).dup.freeze
         @dtype = narray.class
         @data = narray[narray.ne(0)]
-        # TODO: index creation
+        make_csr(narray)
       end
 
       private def initialize_empty(shape, dtype)

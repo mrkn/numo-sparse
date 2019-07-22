@@ -59,6 +59,13 @@ module Numo
         @indptr = Numo::Int32[*indptr]
       end
 
+      # Converts the sparse matrix into a normal array
+      # @return [narray] the matrix from CSR
+      # @example
+      #   narray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
+      #   csr = Numo::Sparse::CSR.new(narray)
+      #   csr.to_narray
+      #   # => Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
       def to_narray()
         narray = data.class.zeros(shape)
         row, row_lim, curr_ind = 0, 0, 0

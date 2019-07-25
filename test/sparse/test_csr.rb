@@ -43,7 +43,7 @@ class TestSparseCSR < Test::Unit::TestCase
       test("create data/indices/indptr") do
         naray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
         csr = Numo::Sparse::CSR.new(naray)
-            
+
         assert_equal([3, 3],
                      csr.shape)
         assert_equal(2,

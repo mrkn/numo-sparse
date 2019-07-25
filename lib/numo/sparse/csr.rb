@@ -26,15 +26,15 @@ module Numo
         @data = []
       end
 
-        # Creates the sparse matrix in csr format
-        # @param narray [narray] the matrix that will be converted
-        # @return [CSR] all values/array's assigned
-        # @example
-        #   narray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
-        #   csr = Numo::Sparse::CSR.new(narray)
-        #   csr.indices
-        #   # => [0, 2, 2, 0, 1, 2]
-        private def make_csr(narray)
+      # Creates the sparse matrix in csr format
+      # @param narray [narray] the matrix that will be converted
+      # @return [CSR] all values/array's assigned
+      # @example
+      #   narray = Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
+      #   csr = Numo::Sparse::CSR.new(narray)
+      #   csr.indices
+      #   # => [0, 2, 2, 0, 1, 2]
+      private def make_csr(narray)
         row_limit, col_limit = shape[0], shape[1]
         matrix, curr_row, count = narray, 0, 0
         indices = []

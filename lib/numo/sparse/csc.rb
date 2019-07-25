@@ -65,12 +65,12 @@ module Numo
       #   csc = Numo::Sparse::CSC.new(narray)
       #   csc.to_narray
       #   # => Numo::DFloat[[1, 0, 4], [0, 0, 5], [2, 3, 6]]
-      def to_narray()
+      def to_narray
         narray = data.class.zeros(shape)
         col, current, curr_ind = 0, 0, 0
         curr_data, col_lim, curr_ptr = 0, 0, 1
-        while col < (indptr.size - 1)
-          col_lim = (indptr[curr_ptr] - indptr[curr_ptr-1])
+        while col < indptr.size - 1
+          col_lim = indptr[curr_ptr] - indptr[curr_ptr-1]
           while current < col_lim
             narray[indices[curr_ind],col] = data[curr_data]
             curr_ind += 1

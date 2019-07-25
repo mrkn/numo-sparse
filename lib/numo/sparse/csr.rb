@@ -66,12 +66,12 @@ module Numo
       #   csr = Numo::Sparse::CSR.new(narray)
       #   csr.to_narray
       #   # => Numo::DFloat[[1, 0, 2], [0, 0, 3], [4, 5, 6]]
-      def to_narray()
+      def to_narray
         narray = data.class.zeros(shape)
         row, row_lim, curr_ind = 0, 0, 0
         curr_data, current, curr_ptr = 0, 0, 1
-        while row < (indptr.size - 1)
-          row_lim = (indptr[curr_ptr] - indptr[curr_ptr-1])
+        while row < indptr.size - 1
+          row_lim = indptr[curr_ptr] - indptr[curr_ptr-1]
           while current < row_lim
             narray[row, indices[curr_ind]] = data[curr_data]
             curr_ind += 1
